@@ -1,0 +1,1521 @@
+
+// --- Key press links ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ------ Action Links ------
+
+
+
+
+// check if ball hit wall
+
+
+
+
+
+
+
+
+
+// -- check if ball hit paddle 1 --
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+//$define lnkCheck_BallY_LT_P1_Y_Sum_P1Len_True			462
+//$define lnkCheck_BallY_LT_P1_Y_Sum_P1Len_False		455
+
+
+// check if ball hit paddle 2
+
+
+
+
+
+
+
+
+
+
+
+
+// -- objects --
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -- variables --
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -- tokens --
+
+
+
+
+
+
+
+
+
+
+
+
+// ******************************************************************************
+
+// =====================
+// System Header Defines
+// =====================
+
+// Operator Defines
+// ----------------
+
+
+
+
+
+
+
+// Button Defines
+// --------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ********************************************************************
+
+// PVR Defines
+// -----------
+
+
+
+
+
+
+
+
+
+
+// ******** ENGINE EVENT IDs ************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ****************************************
+
+// -- constants --
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// game timer delay
+
+
+
+
+
+
+
+
+
+
+// movement alphas
+
+
+
+
+
+
+
+
+
+// sectioning the paddles (for giving an angle to the bounce)
+
+
+
+
+
+
+
+
+
+{ :Scene ( '/pong.asn' 0 ) 
+  :Items (
+    
+// variable prototypes	
+{:BooleanVar 206	:OrigValue False }    	  
+{:IntegerVar 207	:OrigValue 0 }
+{:IntegerVar 208	:OrigValue 0 }
+{:IntegerVar 209	:OrigValue 5 }		// start at SOUTHWEST
+{:IntegerVar 210	:OrigValue 5 }		// start at SOUTHWEST
+{:OStringVar 212	:OrigValue '' }
+{:IntegerVar 213	:OrigValue 70 }
+{:IntegerVar 214	:OrigValue 258 }
+{:IntegerVar 215	:OrigValue 0 }
+{:IntegerVar 218	:OrigValue 0 }
+{:IntegerVar 216	:OrigValue 0 }
+{:IntegerVar 217	:OrigValue 0 }
+{:IntegerVar 220	:OrigValue 20 }
+{:IntegerVar 218	:OrigValue 0 }
+{:IntegerVar 219	:OrigValue 0 }
+
+{:IntegerVar 222	:OrigValue 0 }
+{:IntegerVar 223	:OrigValue 0 }
+
+{:OStringVar 224	:OrigValue '' }
+
+
+
+
+// display objects
+// ============= objects =============
+
+{ :Rectangle 300
+      :OrigBoxSize 660 516
+      :OrigPosition 30 30
+      :OrigLineWidth 2
+      :OrigRefLineColour '=FF=FF=FF=00'          
+      :OrigRefFillColour '=00=00=00=FF'          
+      
+}
+
+{ :Rectangle 302 
+      :OrigBoxSize 5 80
+      :OrigPosition 70 258
+      :OrigLineWidth 0          
+      :OrigRefFillColour '=FF=FF=FF=00'          
+}
+{ :Rectangle 303 
+      :OrigBoxSize 5 80
+      :OrigPosition 645 258
+      :OrigLineWidth 0          
+      :OrigRefFillColour '=FF=FF=FF=00'          
+}
+{ :Rectangle 324 
+      :OrigBoxSize 2 516
+      :OrigPosition 347 30
+      :OrigLineWidth 0          
+      :OrigRefFillColour '=FF=FF=FF=00'          
+}
+
+
+{ :Bitmap 304
+		:OrigContent :ContentRef ( "/ball.png" )
+	  :OrigBoxSize 26 26
+	  :OrigPosition 347 275
+}
+
+{:Text 322
+      :OrigContent 'P1: 0' 
+      :OrigBoxSize 100 30
+      :OrigPosition 50 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=00=00=00'
+      :BackgroundColour '=00=00=00=FF'
+      :HJustification start 
+      :VJustification centre 
+}
+{:Text 323
+      :OrigContent 'P2: 0' 
+      :OrigBoxSize 100 30
+      :OrigPosition 640 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=00=00=00'
+      :BackgroundColour '=00=00=00=FF'
+      :HJustification start 
+      :VJustification centre 
+}
+
+
+
+
+//>>>> DEBUG LINES <<<<<
+
+
+
+
+
+// action links
+{:Link 400        
+	:EventSource 0
+	:EventType UserInput
+	:EventData 1  //up
+	:LinkEffect 
+		(
+		   :Activate(400)			
+		   
+		   //:LockScreen(("/a" 0))
+		   :CallActionSlot(603 1)
+		   //:UnlockScreen(("/a" 0))	
+		   
+		)
+}
+{:Link 401        
+	:EventSource 0
+	:EventType UserInput
+	:EventData 2  //down
+	:LinkEffect 
+		(
+		   :Activate(401)		
+		   
+		   //:LockScreen(("/a" 0))
+		   :CallActionSlot(603 2)
+		   //:UnlockScreen(("/a" 0))	
+		)
+}
+{:Link 402        
+	:EventSource 0
+	:EventType UserInput
+	:EventData 3  //left
+	:LinkEffect 
+		(
+		   :Activate(402)			
+		)
+}
+{:Link 403        
+	:EventSource 0
+	:EventType UserInput
+	:EventData 4 //right
+	:LinkEffect 
+		(
+		   :Activate(403)			
+		)
+}
+{:Link 404        
+	:EventSource 0
+	:EventType UserInput
+	:EventData 15  //select
+	:LinkEffect 
+		(
+		   :Activate(404)			
+		   
+		   // ---- start game -----		   
+		   :SetTimer(0 211 20 )
+		   :Activate(441)
+		   
+		   // ---- start AI players timer ----
+		   //:SetTimer(0 221 30 )
+		   //:Activate(441)
+		   
+		)
+}
+
+{:Link 406
+	:EventSource 0
+	:EventType UserInput
+	:EventData 104  //text
+	:LinkEffect 
+	(
+		:Quit ( ( "/a" 0 ) ) 
+	)
+}
+{:Link 407
+	:EventSource 0
+	:EventType UserInput
+	:EventData 16  //cancel/back
+	:LinkEffect 
+	(
+		:Quit ( ( "/a" 0 ) ) 
+	)
+}
+{:Link 408
+	:EventSource 0
+	:EventType UserInput
+	:EventData 6  //btn1
+	:LinkEffect 
+	(
+		:Activate(408)
+		
+		// move paddle2 up
+		:CallActionSlot(603 3)
+	)
+}
+{:Link 409
+	:EventSource 0
+	:EventType UserInput
+	:EventData 7  //btn2
+	:LinkEffect 
+	(
+		:Activate(409)
+		
+		// move paddle2 down
+		:CallActionSlot(603 4)
+	)
+}
+{:Link 410
+	:EventSource 0
+	:EventType UserInput
+	:EventData 8  //btn3
+	:LinkEffect 
+	(
+		:Activate(410)
+	)
+}
+{:Link 411
+	:EventSource 0
+	:EventType UserInput
+	:EventData 9  //btn4
+	:LinkEffect 
+	(
+		:Activate(411)
+	)
+}
+{:Link 412
+	:EventSource 0
+	:EventType UserInput
+	:EventData 10  //btn5
+	:LinkEffect 
+	(
+		:Activate(412) 
+	)
+}
+{:Link 413
+	:EventSource 0
+	:EventType UserInput
+	:EventData 11  //btn6
+	:LinkEffect 
+	(
+		:Activate(413) 
+	)
+}
+{:Link 414
+	:EventSource 0
+	:EventType UserInput
+	:EventData 12  //btn7
+	:LinkEffect 
+	(
+		:Activate(414) 
+	)
+}
+{:Link 415
+	:EventSource 0
+	:EventType UserInput
+	:EventData 13  //btn8
+	:LinkEffect 
+	(
+		:Activate(415) 
+	)
+}
+{:Link 416
+	:EventSource 0
+	:EventType UserInput
+	:EventData 14  //btn9
+	:LinkEffect 
+	(
+		:Activate(416) 
+	)
+}
+{:Link 417
+	:EventSource 0
+	:EventType UserInput
+	:EventData 5  //btn0
+	:LinkEffect 
+	(
+		:Activate(417) 
+	)
+}
+{:Link 418
+	:EventSource 0
+	:EventType UserInput
+	:EventData 102  //yellow
+	:LinkEffect 
+	(
+		:Activate(418) 
+	)
+}
+{:Link 419
+	:EventSource 0
+	:EventType UserInput
+	:EventData 100  //red
+	:LinkEffect 
+	(
+		:Activate(419) 
+	)
+}
+{:Link 421
+	:EventSource 0
+	:EventType UserInput
+	:EventData 101  //green
+	:LinkEffect 
+	(
+		:Activate(421) 
+	)
+}
+{:Link 420
+	:EventSource 0
+	:EventType UserInput
+	:EventData 103  //blue
+	:LinkEffect 
+	(
+		:Activate(420) 
+	)
+}
+
+ 
+
+
+
+// ---------------------- other links ---------------------------
+{:Link 440
+    :EventSource  0 
+    :EventType IsRunning    
+    :LinkEffect
+    (
+    		:Activate(440)
+    )
+}
+
+
+{:Link 441
+	    //:shared true
+	    :InitiallyActive False
+	    :EventSource 0
+	    :EventType TimerFired 
+	    :EventData 211
+	    :LinkEffect
+	    (
+	    		:Deactivate(441)
+	    		
+	    		// reset timer ahead of everything else   			    		
+		   		:SetTimer(0 211 20 )
+		   		:Activate(441)
+	    		
+	    		// -- increment AI counter and check for AI player movement --
+	    		:Add(218 1)
+	    		:SetVariable(219 :GInteger :IndirectRef 218)
+	    		:Modulo(219 4)
+	    		:Activate(506)
+	    		:TestVariable(219 1 :GInteger 0)
+	    		:Deactivate(506)
+	    		// ------------------------------------------------------------    		
+	    		
+	    		
+	    		// do lock screen to handle flicker on slower boxes
+	    		:LockScreen(("/a" 0))	
+	    		:CallActionSlot(600 1)
+	    		:UnlockScreen(("/a" 0))	
+	    			    		
+	    		// get position values - we do this once to minimize calling it multiple times
+	    		:GetPosition(302 213 214 )
+	    		:GetPosition(303 216 217 )
+					:GetPosition(304 207 208 )	    		
+	    			    		
+	    		// start testing for did ball-hit-P1 conditions
+	    		:CallActionSlot(604 1)
+	    		
+	    		// start testing for did ball-hit-P2 conditions
+	    		:CallActionSlot(605 1)
+	    		
+	    		// check for did ball-hit-wall conditions
+	    		:CallActionSlot(602 1)
+	    		:CallActionSlot(602 2)
+	    		:CallActionSlot(602 3)
+	    		:CallActionSlot(602 4)
+	    		
+	    	
+	    )
+}  
+
+
+// if this is true - that means the AI counter has reached it's limit
+// move AI player and reset counter
+{:Link 506
+    	:InitiallyActive False
+    	:EventSource 219
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    		:Deactivate(506)
+    		
+    		// move AI player
+    		:CallActionSlot(606 1)
+    		
+    		// reset counter
+    		:SetVariable(218 :GInteger 0)    		
+    	)
+}
+
+
+
+
+//{:Link &lnkAITimer_Fired
+//	    //:shared true
+//	    :InitiallyActive False
+//	    :EventSource 0
+//	    :EventType TimerFired 
+//	    :EventData 221
+//	    :LinkEffect
+//	    (
+//	    		:Deactivate(&lnkAITimer_Fired)
+//	    		
+//	    		// reset timer ahead of everything else   			    		
+//		   		:SetTimer(0 221 30 )
+//		   		:Activate(441)
+//		   		
+//		   		:CallActionSlot(606 1)
+//		   		
+//	    )
+//}
+
+
+
+
+
+ 
+ 
+  // ==========================================================      
+  // ======================= TOKEN GROUPS =====================
+  // ==========================================================
+
+
+{:TokenGroup 603
+	:TokenGroupItems
+	(
+		( 301 :ActionSlots
+			(			
+				
+				// ************* PADDLE 1 **************
+				
+				// [1] - Move UP
+				(
+							// get current ball pos
+							:GetPosition(302 213 214 )
+							
+							// add the velocities
+							:Subtract(214 30)
+							
+							// set the new pos
+							:SetPosition(302 :IndirectRef 213 :IndirectRef 214)
+											
+				)
+				
+				// [2] - Move DOWN
+				(
+							// get current ball pos
+							:GetPosition(302 213 214 )
+							
+							// add the velocities
+							:Add(214 30)
+							
+							// set the new pos
+							:SetPosition(302 :IndirectRef 213 :IndirectRef 214)
+				)
+				
+				
+				// ************* PADDLE 2 **************
+				
+				// [3] - Move UP
+				(
+							// get current ball pos
+							:GetPosition(303 216 217 )
+							
+							// add the velocities
+							:Subtract(217 :IndirectRef 220)
+							
+							// set the new pos
+							:SetPosition(303 :IndirectRef 216 :IndirectRef 217)
+											
+				)
+				
+				// [4] - Move DOWN
+				(
+							// get current ball pos
+							:GetPosition(303 216 217 )
+							
+							// add the velocities
+							:Add(217 :IndirectRef 220)
+							
+							// set the new pos
+							:SetPosition(303 :IndirectRef 216 :IndirectRef 217)
+				)
+				
+			)
+		)
+	)
+}
+
+{:TokenGroup 600
+	:TokenGroupItems
+	(
+		( 301 :ActionSlots
+			(			
+				(
+							// get current ball pos
+							:GetPosition(304 207 208 )
+							
+							// add the velocities
+							:Add(207 :IndirectRef 209)
+							:Add(208 :IndirectRef 210)
+							
+							// set the new pos
+							:SetPosition(304 :IndirectRef 207 :IndirectRef 208)
+							
+							
+							
+//>>>> DEBUG LINES <<<<<
+
+					
+					
+				)
+			)
+		)
+	)
+}
+
+{:TokenGroup 601
+	:TokenGroupItems
+	(
+		( 301 :ActionSlots
+			(
+				
+				// *** [1] = SouthWest (-Vx,-Vy) ***
+				(
+										
+					// change speed directions
+					:SetVariable(209 :GInteger 5 )
+					:Multiply (209 -1)
+					
+					:SetVariable(210 :GInteger 5 )
+					:Multiply (210 -1)				
+					
+				)
+  			
+  			// *** [2] = NorthWest (-Vx,Vy) ***
+				(
+					// change speed directions
+					:SetVariable(209 :GInteger 5 )
+					:Multiply (209 -1)
+					
+					:SetVariable(210 :GInteger 5 )
+					:Multiply (210 1)
+					
+				)
+				
+				// *** [3] = NorthEast (Vx,Vy) ***
+				(
+					// change speed directions
+					:SetVariable(209 :GInteger 5 )
+					:Multiply (209 1)
+					
+					:SetVariable(210 :GInteger 5 )
+					:Multiply (210 1)
+				)
+				
+				// *** [4] = SouthEast (Vx,-Vy) ***
+				(
+					// change speed directions
+					:SetVariable(209 :GInteger 5 )
+					:Multiply (209 1)
+					
+					:SetVariable(210 :GInteger 5 )
+					:Multiply (210 -1)
+				)
+				
+			)
+		)
+	)
+}
+
+
+// ================ ball-hit-paddle1 checking rules ================
+{:TokenGroup 604
+	:TokenGroupItems
+	(
+		( 301 :ActionSlots
+			(				
+				(
+						// get ball & paddle1 positions
+						//:GetPosition(302 213 214 )
+						//:GetPosition(304 207 208 )
+						
+						// NB: might need to add an offset here - can't 100% match ball-x and paddle-x
+						// applying offset to p1pos-x
+						:Add(213 5)						
+						:Subtract(214 8)
+						
+						:Activate(450)
+						:Activate(451)
+						:TestVariable(207 4 :GInteger :IndirectRef 213)
+				
+				
+				)
+			)
+		)
+	)
+}
+
+
+// ball-x less than or equal to paddle-x - TRUE
+{:Link 450
+    	:InitiallyActive False
+    	:EventSource 207
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (450 )
+    			:Deactivate (451 )  
+    			
+    			// x-axis verified, now start testing for y axis
+    			:Activate(452)
+    			:Activate(453)
+    			:TestVariable(208 6 :GInteger :IndirectRef 214)
+    			
+    	)
+}
+// ball-x less than or equal to paddle-x - FALSE
+{:Link 451
+    	:InitiallyActive False
+    	:EventSource 207
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (450 )
+    			:Deactivate (451 )      			
+    	)
+}
+
+// ----------------------------
+// ball-y is greater than p1-y - TRUE, check p1 section1
+{:Link 452
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (452 )
+    			:Deactivate (453 )  
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(215 :GInteger :IndirectRef 214)
+    			:Add(215 20)			// lower bound = P1_Y+20
+    			    			
+    			:Activate(454)
+    			:Activate(455)
+    			:TestVariable(208 4 :GInteger :IndirectRef 215)
+    			
+    	)
+}
+// ball-y is greater than p1-y - FALSE
+{:Link 453
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (452 )
+    			:Deactivate (453 )  
+    			
+    	)
+}
+
+// ----------------------------
+// [(p1_y+20) <= ball_y] and  [(ball_y>p1_y] - TRUE
+{:Link 454
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (454 )
+    			:Deactivate (455 )  
+    			
+    			// reverse x dir, (Vy-3)
+    			//:SetVariable(209 :GInteger 5 )
+    			:Multiply (209 -1)
+    			:Add(209 -1)
+    			//:SetVariable(210 :GInteger 5 )
+    			:Subtract(210 3)
+    			
+    	)
+}
+// [(p1_y+20) <= ball_y] and  [(ball_y>p1_y] - FALSE, check p1 section2
+{:Link 455
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (454 )
+    			:Deactivate (455 )
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(215 :GInteger :IndirectRef 214)
+    			:Add(215 40) // lower bound = P1_Y+40
+    			    			
+    			:Activate(456)
+    			:Activate(457)
+    			:TestVariable(208 4 :GInteger :IndirectRef 215)
+    			
+    	)
+}
+
+// ----------------------------
+// [(p1_y+40) <= ball_y] and  [(ball_y > p1_y+20] - TRUE
+{:Link 456
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (456 )
+    			:Deactivate (457 )  
+    			
+    			// reverse x dir, (Vy-3)
+    			//:SetVariable(209 :GInteger 5 )
+    			:Multiply (209 -1)
+    			:Add(209 2)
+    			//:SetVariable(210 :GInteger 5 )
+    			:Subtract(210 1)
+    			
+    	)
+}
+// [(p1_y+40) <= ball_y] and  [(ball_y > p1_y+20] - FALSE, check p1 section3
+{:Link 457
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (456 )
+    			:Deactivate (457 )
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(215 :GInteger :IndirectRef 214)
+    			:Add(215 60)	// lower bound = P1_Y+60
+    			    			
+    			:Activate(458)
+    			:Activate(459)
+    			:TestVariable(208 4 :GInteger :IndirectRef 215)
+    			
+    	)
+}
+
+// ----------------------------
+// [(p1_y+60) <= ball_y] and  [(ball_y > p1_y+40] - TRUE
+{:Link 458
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (458 )
+    			:Deactivate (459 )  
+    			
+    			// reverse x dir, (Vy-3)
+    			//:SetVariable(209 :GInteger 5 )
+    			:Multiply (209 -1)
+    			:Add(209 2)
+    			
+    			//:SetVariable(210 :GInteger 5 )
+    			:Add(210 1)
+    			
+    	)
+}
+// [(p1_y+60) <= ball_y] and  [(ball_y > p1_y+40] - FALSE, check p1 section4
+{:Link 459
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (458 )
+    			:Deactivate (459 )
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(215 :GInteger :IndirectRef 214)
+    			:Add(215 80)	// lower bound = P1_Y+P1_Len
+    			    			
+    			:Activate(460)
+    			:Activate(461)
+    			:TestVariable(208 4 :GInteger :IndirectRef 215)
+    			
+    	)
+}
+
+// ----------------------------
+// [(p1_y+60) < ball_y] and  [(p1_y+p1_len) > ball_y] - TRUE
+{:Link 460
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (460 )
+    			:Deactivate (461 )  
+    			
+    			// -- ball has hit paddle 1 , change direction --
+    			// change direction of balls X vector
+    			//:SetVariable(209 :GInteger 5 )
+    			:Multiply (209 -1)
+    			:Add(209 -1)
+    			//:SetVariable(210 :GInteger 5 )
+    			:Add(210	3)   			
+    			
+    	)
+}
+// [(p1_y+60) < ball_y] and  [(p1_y+p1_len) > ball_y] - FALSE	= OUT OF BOUND
+{:Link 461
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (460 )
+    			:Deactivate (461 )  
+    	)
+}
+
+
+
+
+// ================ ball-hit-paddle2 checking rules ================
+{:TokenGroup 605
+	:TokenGroupItems
+	(
+		( 301 :ActionSlots
+			(				
+				(
+						// get ball & paddle1 positions
+						//:GetPosition(303 216 217 )
+						//:GetPosition(304 207 208 )
+														
+						
+						// NB: might need to add an offset here - can't 100% match ball-x and paddle-x
+						// applying offset to p2pos-x
+						:Subtract(216 35)
+						
+						:Activate(500)
+						:Activate(501)
+						:TestVariable(207 6 :GInteger :IndirectRef 216)
+				
+				
+				)
+			)
+		)
+	)
+}
+
+
+// ball-x less than or equal to paddle-x - TRUE
+{:Link 500
+    	:InitiallyActive False
+    	:EventSource 207
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (500 )
+    			:Deactivate (501 )  
+    			
+    			// reset Player2 AI Counter
+    			:SetVariable(218 :GInteger 0)
+    			
+    			// x-axis verified, now start testing for y axis
+    			:Activate(502)
+    			:Activate(503)
+    			:TestVariable(208 6 :GInteger :IndirectRef 217)
+    			
+    	)
+}
+// ball-x less than or equal to paddle-x - FALSE
+{:Link 501
+    	:InitiallyActive False
+    	:EventSource 207
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (500 )
+    			:Deactivate (501 )      			
+    	)
+}
+
+// -------
+// ball-y is greater than p2-y - TRUE
+{:Link 502
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (502 )
+    			:Deactivate (503 )  
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(215 :GInteger :IndirectRef 217)
+    			:Add(215 80)
+    			    			
+    			:Activate(504)
+    			:Activate(505)
+    			:TestVariable(208 4 :GInteger :IndirectRef 215)
+    			
+    	)
+}
+// ball-y is greater than p2-y - FALSE
+{:Link 503
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (502 )
+    			:Deactivate (503 )  
+    			
+    	)
+}
+
+// ---------
+
+
+{:Link 504
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (504 )
+    			:Deactivate (505 )  
+    			
+    			// -- ball has hit paddle 1 , change direction --
+    			// change direction of balls X vector
+    			:SetVariable(209 :GInteger 5)
+    			:Multiply (209 -1)
+    			
+    	)
+}
+{:Link 505
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (504 )
+    			:Deactivate (505 )  
+    	)
+}
+
+
+
+// ================ AI - Player Move ===================
+
+{:TokenGroup 606
+	:TokenGroupItems
+	(
+		( 301 :ActionSlots
+			(				
+				
+				// [1] - Method 1 : (Basic) - P2_y = Ball_y
+				(
+						// get current p2-paddle pos
+						:GetPosition(303 216 217 )
+						
+						// get current ball pos
+						:GetPosition(304 207 208 )	    
+						
+						// set AI-Player's y coordinate
+						// take into account the offset as well
+						:SetVariable( 217 :GInteger :IndirectRef 208 )
+						:Add(217 -10)
+						
+						:SetPosition(303 :IndirectRef 216 :IndirectRef 217 )
+						
+				)
+			)
+		)
+	)
+}
+
+
+
+
+
+// ================ ball-wall bounce checking rules ================
+
+// reset ball pos
+
+
+{:TokenGroup 607
+	:TokenGroupItems
+	(
+		( 301 :ActionSlots
+			(	
+					(
+						// reset ball pos
+						:SetPosition(304 347 275)		
+						
+						// reset ball speed
+						:SetVariable(209 :GInteger 5 )
+						:SetVariable(210 :GInteger 5 )
+						
+					)
+			)
+		)
+	)
+}
+
+
+{:TokenGroup 602
+	:TokenGroupItems
+	(
+		( 301 :ActionSlots
+			(			
+				
+				//[1] -- did ball hit the *bottom* wall --
+				(
+					:Activate (442 )
+    			:Activate (443 )  
+					:TestVariable(208 5 :GInteger 516)
+				
+				)
+				
+				//[2] -- did ball hit the *top* wall --
+				(
+					:Activate (444 )
+    			:Activate (445 )
+					:TestVariable(208 3 :GInteger 30)
+				)
+
+  			//[3] -- did ball hit the *left* wall --
+  			(
+  				:Activate (446 )
+    			:Activate (447 )
+  				:TestVariable(207 3 :GInteger 30)
+  			)
+  			
+  			//[4] -- did ball hit the *right* wall --
+  			(
+  				:Activate (448 )
+    			:Activate (449 )
+  				:TestVariable(207 5 :GInteger 660)
+  			)
+  		)
+  	)
+  )
+}
+// bottom wall hit test pair		
+{:Link 442
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (442 )
+    			:Deactivate (443 )  
+    			
+    			// change direction of Y vector
+    			:Multiply (210 -1)
+    			  			
+    	
+    	)
+}
+
+{:Link 443
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (442 )
+    			:Deactivate (443 ) 
+    			  			
+    	
+    	)
+} 			
+// top wall hit test pair		
+{:Link 444
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (444 )
+    			:Deactivate (445 )    
+    			
+    			// change direction of Y vector
+    			:Multiply (210 -1)			
+    	
+    	)
+}
+
+{:Link 445
+    	:InitiallyActive False
+    	:EventSource 208
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (444 )
+    			:Deactivate (445 )
+    			
+    			  			
+    	
+    	)
+}  
+
+// Left wall hit test pair		
+{:Link 446
+    	:InitiallyActive False
+    	:EventSource 207
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (446 )
+    			:Deactivate (447 )    	
+    			
+    			// change direction of X vector
+    			:Multiply (209 -1)		
+    			
+    			// reset ball
+    			:CallActionSlot(607 1)
+    			
+    			// print score
+    			:CallActionSlot(608 1)
+    	
+    	)
+}
+
+{:Link 447
+    	:InitiallyActive False
+    	:EventSource 207
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (446 )
+    			:Deactivate (447 )
+    			
+    	
+    	)
+}    
+
+// Right wall hit test pair		
+{:Link 448
+    	:InitiallyActive False
+    	:EventSource 207
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (448 )
+    			:Deactivate (449 )    
+    			
+    			// change direction of X vector
+    			:Multiply (209 -1)		
+    			
+    			// reset ball
+    			:CallActionSlot(607 1)	
+    			
+    			// print score
+    			:CallActionSlot(608 2)
+    	
+    	)
+}
+
+{:Link 449
+    	:InitiallyActive False
+    	:EventSource 207
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (448 )
+    			:Deactivate (449 )
+    			
+    			  			
+    	
+    	)
+}   
+  
+
+// ======== Score Printing =========
+
+{:TokenGroup 608
+	:TokenGroupItems
+	(
+		( 301 :ActionSlots
+			(			
+				
+				//[1] -- print player 1 score
+				(
+						// update score 
+						:Add(222 1)
+						
+						// print to text box
+						:SetVariable(224 :GOctetString "P1: ")						
+						:SetVariable(212 :GInteger :IndirectRef 222)						
+						:Append(224 :IndirectRef 212)
+						
+						:SetData(322 :IndirectRef 224)
+						:BringToFront(322)
+						
+				)
+				
+				//[2] -- print player 2 score
+				(
+						// update score 
+						:Add(223 1)
+						
+						// print to text box
+						:SetVariable(224 :GOctetString "P2: ")						
+						:SetVariable(212 :GInteger :IndirectRef 223)						
+						:Append(224 :IndirectRef 212)
+						
+						:SetData(323 :IndirectRef 224)
+						:BringToFront(323)
+				)
+				
+  		)
+  	)
+  )
+}
+  
+ ) 
+  :InputEventReg 4
+  :SceneCS 720 576 
+}

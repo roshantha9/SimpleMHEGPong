@@ -1,0 +1,1546 @@
+
+// --- Key press links ---
+$define lnkPressUp	400 
+$define lnkPressDown	401 
+$define lnkPressLeft	402 
+$define lnkPressRight	403
+$define lnkPressSelect	404
+$define lnkQuit_Text 406
+$define lnkPressBack	407 
+
+$define lnkPress1	408 
+$define lnkPress2	409 
+$define lnkPress3	410 
+$define lnkPress4	411 
+$define lnkPress5	412 
+$define lnkPress6	413 
+$define lnkPress7	414
+$define lnkPress8	415
+$define lnkPress9	416
+$define lnkPress0	417
+
+$define lnkYellowButton	418 
+$define lnkPressRed	419 
+$define lnkPressBlue	420 
+$define lnkPressGreen 	421
+
+// ------ Action Links ------
+
+$define lnkSceneStartup	440
+$define lnkGameTimer_Fired	441
+
+// check if ball hit wall
+$define lnkCheck_BallHit_BottomWall_True		442
+$define lnkCheck_BallHit_BottomWall_False		443
+$define lnkCheck_BallHit_TopWall_True				444
+$define lnkCheck_BallHit_TopWall_False			445	
+$define lnkCheck_BallHit_LeftWall_True			446
+$define lnkCheck_BallHit_LeftWall_False			447
+$define lnkCheck_BallHit_RightWall_True			448
+$define lnkCheck_BallHit_RightWall_False		449
+
+// -- check if ball hit paddle 1 --
+$define lnkCheck_BallX_LE_P1_X_True								450
+$define lnkCheck_BallX_LE_P1_X_False							451
+$define lnkCheck_BallY_GT_P1_Y_True								452
+$define lnkCheck_BallY_GT_P1_Y_False							453
+
+$define lnkCheck_BallY_LT_P1_Ysum20_True				454
+$define lnkCheck_BallY_LT_P1_Ysum20_False				455
+	
+$define lnkCheck_BallY_LT_P1_Ysum40_True				456
+$define lnkCheck_BallY_LT_P1_Ysum40_False				457
+
+$define lnkCheck_BallY_LT_P1_Ysum60_True				458	
+$define lnkCheck_BallY_LT_P1_Ysum60_False				459
+
+$define lnkCheck_BallY_LT_P1_YsumP1Len_True				460
+$define lnkCheck_BallY_LT_P1_YsumP1Len_False			461
+
+
+//$define lnkCheck_BallY_LT_P1_Y_Sum_P1Len_True			462
+//$define lnkCheck_BallY_LT_P1_Y_Sum_P1Len_False		455
+
+
+// check if ball hit paddle 2
+$define lnkCheck_BallX_GE_P2_X_True								500
+$define lnkCheck_BallX_GE_P2_X_False							501
+$define lnkCheck_BallY_GT_P2_Y_True								502
+$define lnkCheck_BallY_GT_P2_Y_False							503
+$define lnkCheck_BallY_LT_P2_Y_Sum_P2Len_True			504
+$define lnkCheck_BallY_LT_P2_Y_Sum_P2Len_False		505
+
+$define lnkAIPlayerActivateCheck_True							506 
+
+
+
+
+// -- objects --
+$define recBGBorder	300
+$define recDummy		301 
+$define recPlayer1_Paddle	302
+$define recPlayer2_Paddle	303
+$define bmpBall						304
+
+$define txtDEBUG1					320
+$define txtDEBUG2					321
+
+$define txtP1Score				322
+$define txtP2Score				323
+
+$define rctMidline				324
+
+
+// -- variables --
+
+$define blnPlaceHolder		206 
+
+$define intBallPos_X					207
+$define intBallPos_Y					208
+$define intBallSpeed_X		209
+$define intBallSpeed_Y		210
+$define tmrMainGameTimer	211
+$define strItoAContainer	212
+
+$define intP1Pos_X		213
+$define intP1Pos_Y		214
+$define intPaddleArea_LowerBound	215
+$define intP2Pos_X		216
+$define intP2Pos_Y		217
+
+$define intAI_Player_Timer_Count	218
+$define intAI_PlayerCountCheck		219
+$define intAIPlayer_Speed	220
+$define tmrAIPlayerTick	221
+
+$define intP1Score		222
+$define intP2Score		223
+$define strScoreText	224
+
+
+
+
+
+// -- tokens --
+$define tknBallMove	600
+$define tknBallChangeDirection	601
+$define tknCheck_BallHitWall		602
+$define tknPaddleMove						603
+$define tknCheck_BallHitP1			604
+$define tknCheck_BallHitP2			605
+$define tknAIPlayerMove					606
+$define tknResetBall					607
+$define tknPrintScores					608
+
+
+
+// ******************************************************************************
+
+// =====================
+// System Header Defines
+// =====================
+
+// Operator Defines
+// ----------------
+$define eq 1
+$define ne 2
+$define lt 3
+$define le 4
+$define gt 5
+$define ge 6
+
+// Button Defines
+// --------------
+$define btnUp 1
+$define btnDown 2
+$define btnLeft 3
+$define btnRight 4
+$define btn0 5
+$define btn1 6
+$define btn2 7
+$define btn3 8
+$define btn4 9
+$define btn5 10
+$define btn6 11
+$define btn7 12
+$define btn8 13
+$define btn9 14
+$define btnSelect 15
+$define btnRed 100
+$define btnGreen 101
+$define btnYellow 102
+$define btnBlue 103
+$define btnText 104
+$define btnCancelExit 16
+$define btnHelp 17
+
+
+// ********************************************************************
+
+// PVR Defines
+// -----------
+
+$define btnStop						120
+$define btnPlay						121
+$define btnPause					122
+$define btnSkipForward		123
+$define btnSkipBack				124
+$define btnFastForward		125
+$define btnRewind					126
+
+
+// ******** ENGINE EVENT IDs ************
+
+$define ID_GroupIDRefError					2
+$define	ID_ContentRefError					3
+$define ID_TextKeyFunction					4
+$define ID_VideoPrefChanged 				6
+$define	ID_PauseResume 							7
+$define ID_NetworkBootInfo 					9
+$define ID_NonDestructiveTuneOK			10
+$define ID_ICStatusChanged 					200
+$define ID_ICLocalError 						201
+$define ID_ICNetworkError 					202
+$define ID_ICRemoteError 						203
+$define ID_SubtitlePrefChanged 			8
+$define ID_StreamRefError 					204
+$define ID_StreamUnderflow 					205
+$define ID_IPStreamAccessError 			206
+$define ID_AudioDescPrefChanged 		207
+$define ID_StreamUnderflowResume 		208
+$define ID_IndexFileError 					209
+$define ID_KeyFileError 						210
+
+// ****************************************
+
+// -- constants --
+
+$const P1_PADDLE_LEN		80
+$const P1_PADDLE_WIDTH	5
+$const P2_PADDLE_LEN		80
+$const P2_PADDLE_WIDTH	5
+
+$const BALL_X_VELOCITY		5
+$const BALL_Y_VELOCITY		5
+
+$const BOARD_LENGTH	660
+$const BOARD_WIDTH	516
+$const BOARD_MIN_X	30
+$const BOARD_MIN_Y	30
+
+$const WALL_MAX_Y		516
+$const WALL_MAX_X		660
+$const WALL_MIN_Y		30
+$const WALL_MIN_X		30
+
+// game timer delay
+$const GAME_SPEED		20
+
+$const P1_START_X		70
+$const P1_START_Y		258
+$const P2_START_X		645 
+$const P2_START_Y		258
+
+$const BALL_START_X		347 
+$const BALL_START_Y		275
+
+// movement alphas
+$const P1_SPEED			30
+$const P2_SPEED			20		
+
+$const AI_PADDLE_MOVEMENT_OFFSET	-10
+
+$const AI_SPEED		30
+
+$const AI_COUNT_ALPHA	4
+
+// sectioning the paddles (for giving an angle to the bounce)
+$const P1_SECTION1_LEN	20
+$const P1_SECTION2_LEN	40
+$const P1_SECTION3_LEN	60
+
+
+
+
+
+
+{ :Scene ( '/pong.asn' 0 ) 
+  :Items (
+    
+// variable prototypes	
+{:BooleanVar &blnPlaceHolder	:OrigValue False }    	  
+{:IntegerVar &intBallPos_X	:OrigValue 0 }
+{:IntegerVar &intBallPos_Y	:OrigValue 0 }
+{:IntegerVar &intBallSpeed_X	:OrigValue &BALL_X_VELOCITY }		// start at SOUTHWEST
+{:IntegerVar &intBallSpeed_Y	:OrigValue &BALL_Y_VELOCITY }		// start at SOUTHWEST
+{:OStringVar &strItoAContainer	:OrigValue '' }
+{:IntegerVar &intP1Pos_X	:OrigValue &P1_START_X }
+{:IntegerVar &intP1Pos_Y	:OrigValue &P1_START_Y }
+{:IntegerVar &intPaddleArea_LowerBound	:OrigValue 0 }
+{:IntegerVar &intAI_Player_Timer_Count	:OrigValue 0 }
+{:IntegerVar &intP2Pos_X	:OrigValue 0 }
+{:IntegerVar &intP2Pos_Y	:OrigValue 0 }
+{:IntegerVar &intAIPlayer_Speed	:OrigValue &P2_SPEED }
+{:IntegerVar &intAI_Player_Timer_Count	:OrigValue 0 }
+{:IntegerVar &intAI_PlayerCountCheck	:OrigValue 0 }
+
+{:IntegerVar &intP1Score	:OrigValue 0 }
+{:IntegerVar &intP2Score	:OrigValue 0 }
+
+{:OStringVar &strScoreText	:OrigValue '' }
+
+
+
+
+// display objects
+// ============= objects =============
+
+{ :Rectangle &recBGBorder
+      :OrigBoxSize &BOARD_LENGTH &BOARD_WIDTH
+      :OrigPosition &BOARD_MIN_X &BOARD_MIN_Y
+      :OrigLineWidth 2
+      :OrigRefLineColour '=FF=FF=FF=00'          
+      :OrigRefFillColour '=00=00=00=FF'          
+      
+}
+
+{ :Rectangle &recPlayer1_Paddle 
+      :OrigBoxSize &P1_PADDLE_WIDTH &P1_PADDLE_LEN
+      :OrigPosition &P1_START_X &P1_START_Y
+      :OrigLineWidth 0          
+      :OrigRefFillColour '=FF=FF=FF=00'          
+}
+{ :Rectangle &recPlayer2_Paddle 
+      :OrigBoxSize &P2_PADDLE_WIDTH &P2_PADDLE_LEN
+      :OrigPosition &P2_START_X &P2_START_Y
+      :OrigLineWidth 0          
+      :OrigRefFillColour '=FF=FF=FF=00'          
+}
+{ :Rectangle &rctMidline 
+      :OrigBoxSize 2 &BOARD_WIDTH
+      :OrigPosition &BALL_START_X &BOARD_MIN_Y
+      :OrigLineWidth 0          
+      :OrigRefFillColour '=FF=FF=FF=00'          
+}
+
+
+{ :Bitmap &bmpBall
+		:OrigContent :ContentRef ( "/ball.png" )
+	  :OrigBoxSize 26 26
+	  :OrigPosition &BALL_START_X &BALL_START_Y
+}
+
+{:Text &txtP1Score
+      :OrigContent 'P1: 0' 
+      :OrigBoxSize 100 30
+      :OrigPosition 50 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=00=00=00'
+      :BackgroundColour '=00=00=00=FF'
+      :HJustification start 
+      :VJustification centre 
+}
+{:Text &txtP2Score
+      :OrigContent 'P2: 0' 
+      :OrigBoxSize 100 30
+      :OrigPosition 640 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=00=00=00'
+      :BackgroundColour '=00=00=00=FF'
+      :HJustification start 
+      :VJustification centre 
+}
+
+
+
+<DEBUG>
+
+{:Text &txtDEBUG1
+      :OrigContent 'DGBX' 
+      :OrigBoxSize 48 30
+      :OrigPosition 620 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=FF=FF=00'
+      :BackgroundColour '=00=00=FF=00'
+      :HJustification start 
+      :VJustification centre 
+}
+{:Text &txtDEBUG2
+      :OrigContent 'DGBY' 
+      :OrigBoxSize 48 30
+      :OrigPosition 670 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=FF=FF=00'
+      :BackgroundColour '=00=00=FF=00'
+      :HJustification start 
+      :VJustification centre 
+}
+
+</DEBUG>
+
+
+
+
+// action links
+{:Link &lnkPressUp        
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnUp  //up
+	:LinkEffect 
+		(
+		   :Activate(&lnkPressUp)			
+		   
+		   //:LockScreen(("/a" 0))
+		   :CallActionSlot(&tknPaddleMove 1)
+		   //:UnlockScreen(("/a" 0))	
+		   
+		)
+}
+{:Link &lnkPressDown        
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnDown  //down
+	:LinkEffect 
+		(
+		   :Activate(&lnkPressDown)		
+		   
+		   //:LockScreen(("/a" 0))
+		   :CallActionSlot(&tknPaddleMove 2)
+		   //:UnlockScreen(("/a" 0))	
+		)
+}
+{:Link &lnkPressLeft        
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnLeft  //left
+	:LinkEffect 
+		(
+		   :Activate(&lnkPressLeft)			
+		)
+}
+{:Link &lnkPressRight        
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnRight //right
+	:LinkEffect 
+		(
+		   :Activate(&lnkPressRight)			
+		)
+}
+{:Link &lnkPressSelect        
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnSelect  //select
+	:LinkEffect 
+		(
+		   :Activate(&lnkPressSelect)			
+		   
+		   // ---- start game -----		   
+		   :SetTimer(0 &tmrMainGameTimer &GAME_SPEED )
+		   :Activate(&lnkGameTimer_Fired)
+		   
+		   // ---- start AI players timer ----
+		   //:SetTimer(0 &tmrAIPlayerTick &AI_SPEED )
+		   //:Activate(&lnkGameTimer_Fired)
+		   
+		)
+}
+
+{:Link &lnkQuit_Text
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnText  //text
+	:LinkEffect 
+	(
+		:Quit ( ( "/a" 0 ) ) 
+	)
+}
+{:Link &lnkPressBack
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnCancelExit  //cancel/back
+	:LinkEffect 
+	(
+		:Quit ( ( "/a" 0 ) ) 
+	)
+}
+{:Link &lnkPress1
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn1  //btn1
+	:LinkEffect 
+	(
+		:Activate(&lnkPress1)
+		
+		// move paddle2 up
+		:CallActionSlot(&tknPaddleMove 3)
+	)
+}
+{:Link &lnkPress2
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn2  //btn2
+	:LinkEffect 
+	(
+		:Activate(&lnkPress2)
+		
+		// move paddle2 down
+		:CallActionSlot(&tknPaddleMove 4)
+	)
+}
+{:Link &lnkPress3
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn3  //btn3
+	:LinkEffect 
+	(
+		:Activate(&lnkPress3)
+	)
+}
+{:Link &lnkPress4
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn4  //btn4
+	:LinkEffect 
+	(
+		:Activate(&lnkPress4)
+	)
+}
+{:Link &lnkPress5
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn5  //btn5
+	:LinkEffect 
+	(
+		:Activate(&lnkPress5) 
+	)
+}
+{:Link &lnkPress6
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn6  //btn6
+	:LinkEffect 
+	(
+		:Activate(&lnkPress6) 
+	)
+}
+{:Link &lnkPress7
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn7  //btn7
+	:LinkEffect 
+	(
+		:Activate(&lnkPress7) 
+	)
+}
+{:Link &lnkPress8
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn8  //btn8
+	:LinkEffect 
+	(
+		:Activate(&lnkPress8) 
+	)
+}
+{:Link &lnkPress9
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn9  //btn9
+	:LinkEffect 
+	(
+		:Activate(&lnkPress9) 
+	)
+}
+{:Link &lnkPress0
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btn0  //btn0
+	:LinkEffect 
+	(
+		:Activate(&lnkPress0) 
+	)
+}
+{:Link &lnkYellowButton
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnYellow  //yellow
+	:LinkEffect 
+	(
+		:Activate(&lnkYellowButton) 
+	)
+}
+{:Link &lnkPressRed
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnRed  //red
+	:LinkEffect 
+	(
+		:Activate(&lnkPressRed) 
+	)
+}
+{:Link &lnkPressGreen
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnGreen  //green
+	:LinkEffect 
+	(
+		:Activate(&lnkPressGreen) 
+	)
+}
+{:Link &lnkPressBlue
+	:EventSource 0
+	:EventType UserInput
+	:EventData &btnBlue  //blue
+	:LinkEffect 
+	(
+		:Activate(&lnkPressBlue) 
+	)
+}
+
+ 
+
+
+
+// ---------------------- other links ---------------------------
+{:Link &lnkSceneStartup
+    :EventSource  0 
+    :EventType IsRunning    
+    :LinkEffect
+    (
+    		:Activate(&lnkSceneStartup)
+    )
+}
+
+
+{:Link &lnkGameTimer_Fired
+	    //:shared true
+	    :InitiallyActive False
+	    :EventSource 0
+	    :EventType TimerFired 
+	    :EventData &tmrMainGameTimer
+	    :LinkEffect
+	    (
+	    		:Deactivate(&lnkGameTimer_Fired)
+	    		
+	    		// reset timer ahead of everything else   			    		
+		   		:SetTimer(0 &tmrMainGameTimer &GAME_SPEED )
+		   		:Activate(&lnkGameTimer_Fired)
+	    		
+	    		// -- increment AI counter and check for AI player movement --
+	    		:Add(&intAI_Player_Timer_Count 1)
+	    		:SetVariable(&intAI_PlayerCountCheck :GInteger :IndirectRef &intAI_Player_Timer_Count)
+	    		:Modulo(&intAI_PlayerCountCheck &AI_COUNT_ALPHA)
+	    		:Activate(&lnkAIPlayerActivateCheck_True)
+	    		:TestVariable(&intAI_PlayerCountCheck &eq :GInteger 0)
+	    		:Deactivate(&lnkAIPlayerActivateCheck_True)
+	    		// ------------------------------------------------------------    		
+	    		
+	    		
+	    		// do lock screen to handle flicker on slower boxes
+	    		:LockScreen(("/a" 0))	
+	    		:CallActionSlot(&tknBallMove 1)
+	    		:UnlockScreen(("/a" 0))	
+	    			    		
+	    		// get position values - we do this once to minimize calling it multiple times
+	    		:GetPosition(&recPlayer1_Paddle &intP1Pos_X &intP1Pos_Y )
+	    		:GetPosition(&recPlayer2_Paddle &intP2Pos_X &intP2Pos_Y )
+					:GetPosition(&bmpBall &intBallPos_X &intBallPos_Y )	    		
+	    			    		
+	    		// start testing for did ball-hit-P1 conditions
+	    		:CallActionSlot(&tknCheck_BallHitP1 1)
+	    		
+	    		// start testing for did ball-hit-P2 conditions
+	    		:CallActionSlot(&tknCheck_BallHitP2 1)
+	    		
+	    		// check for did ball-hit-wall conditions
+	    		:CallActionSlot(&tknCheck_BallHitWall 1)
+	    		:CallActionSlot(&tknCheck_BallHitWall 2)
+	    		:CallActionSlot(&tknCheck_BallHitWall 3)
+	    		:CallActionSlot(&tknCheck_BallHitWall 4)
+	    		
+	    	
+	    )
+}  
+
+
+// if this is true - that means the AI counter has reached it's limit
+// move AI player and reset counter
+{:Link &lnkAIPlayerActivateCheck_True
+    	:InitiallyActive False
+    	:EventSource &intAI_PlayerCountCheck
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    		:Deactivate(&lnkAIPlayerActivateCheck_True)
+    		
+    		// move AI player
+    		:CallActionSlot(&tknAIPlayerMove 1)
+    		
+    		// reset counter
+    		:SetVariable(&intAI_Player_Timer_Count :GInteger 0)    		
+    	)
+}
+
+
+
+
+//{:Link &lnkAITimer_Fired
+//	    //:shared true
+//	    :InitiallyActive False
+//	    :EventSource 0
+//	    :EventType TimerFired 
+//	    :EventData &tmrAIPlayerTick
+//	    :LinkEffect
+//	    (
+//	    		:Deactivate(&lnkAITimer_Fired)
+//	    		
+//	    		// reset timer ahead of everything else   			    		
+//		   		:SetTimer(0 &tmrAIPlayerTick &AI_SPEED )
+//		   		:Activate(&lnkGameTimer_Fired)
+//		   		
+//		   		:CallActionSlot(&tknAIPlayerMove 1)
+//		   		
+//	    )
+//}
+
+
+
+
+
+ 
+ 
+  // ==========================================================      
+  // ======================= TOKEN GROUPS =====================
+  // ==========================================================
+
+
+{:TokenGroup &tknPaddleMove
+	:TokenGroupItems
+	(
+		( &recDummy :ActionSlots
+			(			
+				
+				// ************* PADDLE 1 **************
+				
+				// [1] - Move UP
+				(
+							// get current ball pos
+							:GetPosition(&recPlayer1_Paddle &intP1Pos_X &intP1Pos_Y )
+							
+							// add the velocities
+							:Subtract(&intP1Pos_Y &P1_SPEED)
+							
+							// set the new pos
+							:SetPosition(&recPlayer1_Paddle :IndirectRef &intP1Pos_X :IndirectRef &intP1Pos_Y)
+											
+				)
+				
+				// [2] - Move DOWN
+				(
+							// get current ball pos
+							:GetPosition(&recPlayer1_Paddle &intP1Pos_X &intP1Pos_Y )
+							
+							// add the velocities
+							:Add(&intP1Pos_Y &P1_SPEED)
+							
+							// set the new pos
+							:SetPosition(&recPlayer1_Paddle :IndirectRef &intP1Pos_X :IndirectRef &intP1Pos_Y)
+				)
+				
+				
+				// ************* PADDLE 2 **************
+				
+				// [3] - Move UP
+				(
+							// get current ball pos
+							:GetPosition(&recPlayer2_Paddle &intP2Pos_X &intP2Pos_Y )
+							
+							// add the velocities
+							:Subtract(&intP2Pos_Y :IndirectRef &intAIPlayer_Speed)
+							
+							// set the new pos
+							:SetPosition(&recPlayer2_Paddle :IndirectRef &intP2Pos_X :IndirectRef &intP2Pos_Y)
+											
+				)
+				
+				// [4] - Move DOWN
+				(
+							// get current ball pos
+							:GetPosition(&recPlayer2_Paddle &intP2Pos_X &intP2Pos_Y )
+							
+							// add the velocities
+							:Add(&intP2Pos_Y :IndirectRef &intAIPlayer_Speed)
+							
+							// set the new pos
+							:SetPosition(&recPlayer2_Paddle :IndirectRef &intP2Pos_X :IndirectRef &intP2Pos_Y)
+				)
+				
+			)
+		)
+	)
+}
+
+{:TokenGroup &tknBallMove
+	:TokenGroupItems
+	(
+		( &recDummy :ActionSlots
+			(			
+				(
+							// get current ball pos
+							:GetPosition(&bmpBall &intBallPos_X &intBallPos_Y )
+							
+							// add the velocities
+							:Add(&intBallPos_X :IndirectRef &intBallSpeed_X)
+							:Add(&intBallPos_Y :IndirectRef &intBallSpeed_Y)
+							
+							// set the new pos
+							:SetPosition(&bmpBall :IndirectRef &intBallPos_X :IndirectRef &intBallPos_Y)
+							
+							
+							<DEBUG>
+							// set debug
+							:SetVariable(&strItoAContainer :GInteger :IndirectRef &intBallPos_Y)
+							:SetData(&txtDEBUG1 :IndirectRef &strItoAContainer)
+							:SetVariable(&strItoAContainer :GInteger :IndirectRef &intBallPos_X)
+							:SetData(&txtDEBUG2 :IndirectRef &strItoAContainer)
+							</DEBUG>
+					
+					
+				)
+			)
+		)
+	)
+}
+
+{:TokenGroup &tknBallChangeDirection
+	:TokenGroupItems
+	(
+		( &recDummy :ActionSlots
+			(
+				
+				// *** [1] = SouthWest (-Vx,-Vy) ***
+				(
+										
+					// change speed directions
+					:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY )
+					:Multiply (&intBallSpeed_X -1)
+					
+					:SetVariable(&intBallSpeed_Y :GInteger &BALL_Y_VELOCITY )
+					:Multiply (&intBallSpeed_Y -1)				
+					
+				)
+  			
+  			// *** [2] = NorthWest (-Vx,Vy) ***
+				(
+					// change speed directions
+					:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY )
+					:Multiply (&intBallSpeed_X -1)
+					
+					:SetVariable(&intBallSpeed_Y :GInteger &BALL_Y_VELOCITY )
+					:Multiply (&intBallSpeed_Y 1)
+					
+				)
+				
+				// *** [3] = NorthEast (Vx,Vy) ***
+				(
+					// change speed directions
+					:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY )
+					:Multiply (&intBallSpeed_X 1)
+					
+					:SetVariable(&intBallSpeed_Y :GInteger &BALL_Y_VELOCITY )
+					:Multiply (&intBallSpeed_Y 1)
+				)
+				
+				// *** [4] = SouthEast (Vx,-Vy) ***
+				(
+					// change speed directions
+					:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY )
+					:Multiply (&intBallSpeed_X 1)
+					
+					:SetVariable(&intBallSpeed_Y :GInteger &BALL_Y_VELOCITY )
+					:Multiply (&intBallSpeed_Y -1)
+				)
+				
+			)
+		)
+	)
+}
+
+
+// ================ ball-hit-paddle1 checking rules ================
+{:TokenGroup &tknCheck_BallHitP1
+	:TokenGroupItems
+	(
+		( &recDummy :ActionSlots
+			(				
+				(
+						// get ball & paddle1 positions
+						//:GetPosition(&recPlayer1_Paddle &intP1Pos_X &intP1Pos_Y )
+						//:GetPosition(&bmpBall &intBallPos_X &intBallPos_Y )
+						
+						// NB: might need to add an offset here - can't 100% match ball-x and paddle-x
+						// applying offset to p1pos-x
+						:Add(&intP1Pos_X 5)						
+						:Subtract(&intP1Pos_Y 8)
+						
+						:Activate(&lnkCheck_BallX_LE_P1_X_True)
+						:Activate(&lnkCheck_BallX_LE_P1_X_False)
+						:TestVariable(&intBallPos_X &le :GInteger :IndirectRef &intP1Pos_X)
+				
+				
+				)
+			)
+		)
+	)
+}
+
+
+// ball-x less than or equal to paddle-x - TRUE
+{:Link &lnkCheck_BallX_LE_P1_X_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_X
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallX_LE_P1_X_True )
+    			:Deactivate (&lnkCheck_BallX_LE_P1_X_False )  
+    			
+    			// x-axis verified, now start testing for y axis
+    			:Activate(&lnkCheck_BallY_GT_P1_Y_True)
+    			:Activate(&lnkCheck_BallY_GT_P1_Y_False)
+    			:TestVariable(&intBallPos_Y &ge :GInteger :IndirectRef &intP1Pos_Y)
+    			
+    	)
+}
+// ball-x less than or equal to paddle-x - FALSE
+{:Link &lnkCheck_BallX_LE_P1_X_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_X
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallX_LE_P1_X_True )
+    			:Deactivate (&lnkCheck_BallX_LE_P1_X_False )      			
+    	)
+}
+
+// ----------------------------
+// ball-y is greater than p1-y - TRUE, check p1 section1
+{:Link &lnkCheck_BallY_GT_P1_Y_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_GT_P1_Y_True )
+    			:Deactivate (&lnkCheck_BallY_GT_P1_Y_False )  
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(&intPaddleArea_LowerBound :GInteger :IndirectRef &intP1Pos_Y)
+    			:Add(&intPaddleArea_LowerBound &P1_SECTION1_LEN)			// lower bound = P1_Y+20
+    			    			
+    			:Activate(&lnkCheck_BallY_LT_P1_Ysum20_True)
+    			:Activate(&lnkCheck_BallY_LT_P1_Ysum20_False)
+    			:TestVariable(&intBallPos_Y &le :GInteger :IndirectRef &intPaddleArea_LowerBound)
+    			
+    	)
+}
+// ball-y is greater than p1-y - FALSE
+{:Link &lnkCheck_BallY_GT_P1_Y_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_GT_P1_Y_True )
+    			:Deactivate (&lnkCheck_BallY_GT_P1_Y_False )  
+    			
+    	)
+}
+
+// ----------------------------
+// [(p1_y+20) <= ball_y] and  [(ball_y>p1_y] - TRUE
+{:Link &lnkCheck_BallY_LT_P1_Ysum20_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum20_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum20_False )  
+    			
+    			// reverse x dir, (Vy-3)
+    			//:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY )
+    			:Multiply (&intBallSpeed_X -1)
+    			:Add(&intBallSpeed_X -1)
+    			//:SetVariable(&intBallSpeed_Y :GInteger &BALL_Y_VELOCITY )
+    			:Subtract(&intBallSpeed_Y 3)
+    			
+    	)
+}
+// [(p1_y+20) <= ball_y] and  [(ball_y>p1_y] - FALSE, check p1 section2
+{:Link &lnkCheck_BallY_LT_P1_Ysum20_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum20_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum20_False )
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(&intPaddleArea_LowerBound :GInteger :IndirectRef &intP1Pos_Y)
+    			:Add(&intPaddleArea_LowerBound &P1_SECTION2_LEN) // lower bound = P1_Y+40
+    			    			
+    			:Activate(&lnkCheck_BallY_LT_P1_Ysum40_True)
+    			:Activate(&lnkCheck_BallY_LT_P1_Ysum40_False)
+    			:TestVariable(&intBallPos_Y &le :GInteger :IndirectRef &intPaddleArea_LowerBound)
+    			
+    	)
+}
+
+// ----------------------------
+// [(p1_y+40) <= ball_y] and  [(ball_y > p1_y+20] - TRUE
+{:Link &lnkCheck_BallY_LT_P1_Ysum40_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum40_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum40_False )  
+    			
+    			// reverse x dir, (Vy-3)
+    			//:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY )
+    			:Multiply (&intBallSpeed_X -1)
+    			:Add(&intBallSpeed_X 2)
+    			//:SetVariable(&intBallSpeed_Y :GInteger &BALL_Y_VELOCITY )
+    			:Subtract(&intBallSpeed_Y 1)
+    			
+    	)
+}
+// [(p1_y+40) <= ball_y] and  [(ball_y > p1_y+20] - FALSE, check p1 section3
+{:Link &lnkCheck_BallY_LT_P1_Ysum40_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum40_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum40_False )
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(&intPaddleArea_LowerBound :GInteger :IndirectRef &intP1Pos_Y)
+    			:Add(&intPaddleArea_LowerBound &P1_SECTION3_LEN)	// lower bound = P1_Y+60
+    			    			
+    			:Activate(&lnkCheck_BallY_LT_P1_Ysum60_True)
+    			:Activate(&lnkCheck_BallY_LT_P1_Ysum60_False)
+    			:TestVariable(&intBallPos_Y &le :GInteger :IndirectRef &intPaddleArea_LowerBound)
+    			
+    	)
+}
+
+// ----------------------------
+// [(p1_y+60) <= ball_y] and  [(ball_y > p1_y+40] - TRUE
+{:Link &lnkCheck_BallY_LT_P1_Ysum60_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum60_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum60_False )  
+    			
+    			// reverse x dir, (Vy-3)
+    			//:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY )
+    			:Multiply (&intBallSpeed_X -1)
+    			:Add(&intBallSpeed_X 2)
+    			
+    			//:SetVariable(&intBallSpeed_Y :GInteger &BALL_Y_VELOCITY )
+    			:Add(&intBallSpeed_Y 1)
+    			
+    	)
+}
+// [(p1_y+60) <= ball_y] and  [(ball_y > p1_y+40] - FALSE, check p1 section4
+{:Link &lnkCheck_BallY_LT_P1_Ysum60_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum60_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P1_Ysum60_False )
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(&intPaddleArea_LowerBound :GInteger :IndirectRef &intP1Pos_Y)
+    			:Add(&intPaddleArea_LowerBound &P1_PADDLE_LEN)	// lower bound = P1_Y+P1_Len
+    			    			
+    			:Activate(&lnkCheck_BallY_LT_P1_YsumP1Len_True)
+    			:Activate(&lnkCheck_BallY_LT_P1_YsumP1Len_False)
+    			:TestVariable(&intBallPos_Y &le :GInteger :IndirectRef &intPaddleArea_LowerBound)
+    			
+    	)
+}
+
+// ----------------------------
+// [(p1_y+60) < ball_y] and  [(p1_y+p1_len) > ball_y] - TRUE
+{:Link &lnkCheck_BallY_LT_P1_YsumP1Len_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P1_YsumP1Len_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P1_YsumP1Len_False )  
+    			
+    			// -- ball has hit paddle 1 , change direction --
+    			// change direction of balls X vector
+    			//:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY )
+    			:Multiply (&intBallSpeed_X -1)
+    			:Add(&intBallSpeed_X -1)
+    			//:SetVariable(&intBallSpeed_Y :GInteger &BALL_Y_VELOCITY )
+    			:Add(&intBallSpeed_Y	3)   			
+    			
+    	)
+}
+// [(p1_y+60) < ball_y] and  [(p1_y+p1_len) > ball_y] - FALSE	= OUT OF BOUND
+{:Link &lnkCheck_BallY_LT_P1_YsumP1Len_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P1_YsumP1Len_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P1_YsumP1Len_False )  
+    	)
+}
+
+
+
+
+// ================ ball-hit-paddle2 checking rules ================
+{:TokenGroup &tknCheck_BallHitP2
+	:TokenGroupItems
+	(
+		( &recDummy :ActionSlots
+			(				
+				(
+						// get ball & paddle1 positions
+						//:GetPosition(&recPlayer2_Paddle &intP2Pos_X &intP2Pos_Y )
+						//:GetPosition(&bmpBall &intBallPos_X &intBallPos_Y )
+														
+						
+						// NB: might need to add an offset here - can't 100% match ball-x and paddle-x
+						// applying offset to p2pos-x
+						:Subtract(&intP2Pos_X 35)
+						
+						:Activate(&lnkCheck_BallX_GE_P2_X_True)
+						:Activate(&lnkCheck_BallX_GE_P2_X_False)
+						:TestVariable(&intBallPos_X &ge :GInteger :IndirectRef &intP2Pos_X)
+				
+				
+				)
+			)
+		)
+	)
+}
+
+
+// ball-x less than or equal to paddle-x - TRUE
+{:Link &lnkCheck_BallX_GE_P2_X_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_X
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallX_GE_P2_X_True )
+    			:Deactivate (&lnkCheck_BallX_GE_P2_X_False )  
+    			
+    			// reset Player2 AI Counter
+    			:SetVariable(&intAI_Player_Timer_Count :GInteger 0)
+    			
+    			// x-axis verified, now start testing for y axis
+    			:Activate(&lnkCheck_BallY_GT_P2_Y_True)
+    			:Activate(&lnkCheck_BallY_GT_P2_Y_False)
+    			:TestVariable(&intBallPos_Y &ge :GInteger :IndirectRef &intP2Pos_Y)
+    			
+    	)
+}
+// ball-x less than or equal to paddle-x - FALSE
+{:Link &lnkCheck_BallX_GE_P2_X_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_X
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallX_GE_P2_X_True )
+    			:Deactivate (&lnkCheck_BallX_GE_P2_X_False )      			
+    	)
+}
+
+// -------
+// ball-y is greater than p2-y - TRUE
+{:Link &lnkCheck_BallY_GT_P2_Y_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_GT_P2_Y_True )
+    			:Deactivate (&lnkCheck_BallY_GT_P2_Y_False )  
+    			
+    			// y-axis upper_bound verified, now check lower bound
+    			:SetVariable(&intPaddleArea_LowerBound :GInteger :IndirectRef &intP2Pos_Y)
+    			:Add(&intPaddleArea_LowerBound &P2_PADDLE_LEN)
+    			    			
+    			:Activate(&lnkCheck_BallY_LT_P2_Y_Sum_P2Len_True)
+    			:Activate(&lnkCheck_BallY_LT_P2_Y_Sum_P2Len_False)
+    			:TestVariable(&intBallPos_Y &le :GInteger :IndirectRef &intPaddleArea_LowerBound)
+    			
+    	)
+}
+// ball-y is greater than p2-y - FALSE
+{:Link &lnkCheck_BallY_GT_P2_Y_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_GT_P2_Y_True )
+    			:Deactivate (&lnkCheck_BallY_GT_P2_Y_False )  
+    			
+    	)
+}
+
+// ---------
+
+
+{:Link &lnkCheck_BallY_LT_P2_Y_Sum_P2Len_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P2_Y_Sum_P2Len_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P2_Y_Sum_P2Len_False )  
+    			
+    			// -- ball has hit paddle 1 , change direction --
+    			// change direction of balls X vector
+    			:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY)
+    			:Multiply (&intBallSpeed_X -1)
+    			
+    	)
+}
+{:Link &lnkCheck_BallY_LT_P2_Y_Sum_P2Len_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallY_LT_P2_Y_Sum_P2Len_True )
+    			:Deactivate (&lnkCheck_BallY_LT_P2_Y_Sum_P2Len_False )  
+    	)
+}
+
+
+
+// ================ AI - Player Move ===================
+
+{:TokenGroup &tknAIPlayerMove
+	:TokenGroupItems
+	(
+		( &recDummy :ActionSlots
+			(				
+				
+				// [1] - Method 1 : (Basic) - P2_y = Ball_y
+				(
+						// get current p2-paddle pos
+						:GetPosition(&recPlayer2_Paddle &intP2Pos_X &intP2Pos_Y )
+						
+						// get current ball pos
+						:GetPosition(&bmpBall &intBallPos_X &intBallPos_Y )	    
+						
+						// set AI-Player's y coordinate
+						// take into account the offset as well
+						:SetVariable( &intP2Pos_Y :GInteger :IndirectRef &intBallPos_Y )
+						:Add(&intP2Pos_Y &AI_PADDLE_MOVEMENT_OFFSET)
+						
+						:SetPosition(&recPlayer2_Paddle :IndirectRef &intP2Pos_X :IndirectRef &intP2Pos_Y )
+						
+				)
+			)
+		)
+	)
+}
+
+
+
+
+
+// ================ ball-wall bounce checking rules ================
+
+// reset ball pos
+
+
+{:TokenGroup &tknResetBall
+	:TokenGroupItems
+	(
+		( &recDummy :ActionSlots
+			(	
+					(
+						// reset ball pos
+						:SetPosition(&bmpBall &BALL_START_X &BALL_START_Y)		
+						
+						// reset ball speed
+						:SetVariable(&intBallSpeed_X :GInteger &BALL_X_VELOCITY )
+						:SetVariable(&intBallSpeed_Y :GInteger &BALL_Y_VELOCITY )
+						
+					)
+			)
+		)
+	)
+}
+
+
+{:TokenGroup &tknCheck_BallHitWall
+	:TokenGroupItems
+	(
+		( &recDummy :ActionSlots
+			(			
+				
+				//[1] -- did ball hit the *bottom* wall --
+				(
+					:Activate (&lnkCheck_BallHit_BottomWall_True )
+    			:Activate (&lnkCheck_BallHit_BottomWall_False )  
+					:TestVariable(&intBallPos_Y &gt :GInteger &WALL_MAX_Y)
+				
+				)
+				
+				//[2] -- did ball hit the *top* wall --
+				(
+					:Activate (&lnkCheck_BallHit_TopWall_True )
+    			:Activate (&lnkCheck_BallHit_TopWall_False )
+					:TestVariable(&intBallPos_Y &lt :GInteger &WALL_MIN_Y)
+				)
+
+  			//[3] -- did ball hit the *left* wall --
+  			(
+  				:Activate (&lnkCheck_BallHit_LeftWall_True )
+    			:Activate (&lnkCheck_BallHit_LeftWall_False )
+  				:TestVariable(&intBallPos_X &lt :GInteger &WALL_MIN_X)
+  			)
+  			
+  			//[4] -- did ball hit the *right* wall --
+  			(
+  				:Activate (&lnkCheck_BallHit_RightWall_True )
+    			:Activate (&lnkCheck_BallHit_RightWall_False )
+  				:TestVariable(&intBallPos_X &gt :GInteger &WALL_MAX_X)
+  			)
+  		)
+  	)
+  )
+}
+// bottom wall hit test pair		
+{:Link &lnkCheck_BallHit_BottomWall_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallHit_BottomWall_True )
+    			:Deactivate (&lnkCheck_BallHit_BottomWall_False )  
+    			
+    			// change direction of Y vector
+    			:Multiply (&intBallSpeed_Y -1)
+    			  			
+    	
+    	)
+}
+
+{:Link &lnkCheck_BallHit_BottomWall_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallHit_BottomWall_True )
+    			:Deactivate (&lnkCheck_BallHit_BottomWall_False ) 
+    			  			
+    	
+    	)
+} 			
+// top wall hit test pair		
+{:Link &lnkCheck_BallHit_TopWall_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallHit_TopWall_True )
+    			:Deactivate (&lnkCheck_BallHit_TopWall_False )    
+    			
+    			// change direction of Y vector
+    			:Multiply (&intBallSpeed_Y -1)			
+    	
+    	)
+}
+
+{:Link &lnkCheck_BallHit_TopWall_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_Y
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallHit_TopWall_True )
+    			:Deactivate (&lnkCheck_BallHit_TopWall_False )
+    			
+    			  			
+    	
+    	)
+}  
+
+// Left wall hit test pair		
+{:Link &lnkCheck_BallHit_LeftWall_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_X
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallHit_LeftWall_True )
+    			:Deactivate (&lnkCheck_BallHit_LeftWall_False )    	
+    			
+    			// change direction of X vector
+    			:Multiply (&intBallSpeed_X -1)		
+    			
+    			// reset ball
+    			:CallActionSlot(&tknResetBall 1)
+    			
+    			// print score
+    			:CallActionSlot(&tknPrintScores 1)
+    	
+    	)
+}
+
+{:Link &lnkCheck_BallHit_LeftWall_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_X
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallHit_LeftWall_True )
+    			:Deactivate (&lnkCheck_BallHit_LeftWall_False )
+    			
+    	
+    	)
+}    
+
+// Right wall hit test pair		
+{:Link &lnkCheck_BallHit_RightWall_True
+    	:InitiallyActive False
+    	:EventSource &intBallPos_X
+    	:EventType TestEvent       
+    	:EventData True
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallHit_RightWall_True )
+    			:Deactivate (&lnkCheck_BallHit_RightWall_False )    
+    			
+    			// change direction of X vector
+    			:Multiply (&intBallSpeed_X -1)		
+    			
+    			// reset ball
+    			:CallActionSlot(&tknResetBall 1)	
+    			
+    			// print score
+    			:CallActionSlot(&tknPrintScores 2)
+    	
+    	)
+}
+
+{:Link &lnkCheck_BallHit_RightWall_False
+    	:InitiallyActive False
+    	:EventSource &intBallPos_X
+    	:EventType TestEvent       
+    	:EventData False
+    	:LinkEffect
+    	(
+    			:Deactivate (&lnkCheck_BallHit_RightWall_True )
+    			:Deactivate (&lnkCheck_BallHit_RightWall_False )
+    			
+    			  			
+    	
+    	)
+}   
+  
+
+// ======== Score Printing =========
+
+{:TokenGroup &tknPrintScores
+	:TokenGroupItems
+	(
+		( &recDummy :ActionSlots
+			(			
+				
+				//[1] -- print player 1 score
+				(
+						// update score 
+						:Add(&intP1Score 1)
+						
+						// print to text box
+						:SetVariable(&strScoreText :GOctetString "P1: ")						
+						:SetVariable(&strItoAContainer :GInteger :IndirectRef &intP1Score)						
+						:Append(&strScoreText :IndirectRef &strItoAContainer)
+						
+						:SetData(&txtP1Score :IndirectRef &strScoreText)
+						:BringToFront(&txtP1Score)
+						
+				)
+				
+				//[2] -- print player 2 score
+				(
+						// update score 
+						:Add(&intP2Score 1)
+						
+						// print to text box
+						:SetVariable(&strScoreText :GOctetString "P2: ")						
+						:SetVariable(&strItoAContainer :GInteger :IndirectRef &intP2Score)						
+						:Append(&strScoreText :IndirectRef &strItoAContainer)
+						
+						:SetData(&txtP2Score :IndirectRef &strScoreText)
+						:BringToFront(&txtP2Score)
+				)
+				
+  		)
+  	)
+  )
+}
+  
+ ) 
+  :InputEventReg 4
+  :SceneCS 720 576 
+}

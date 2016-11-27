@@ -1,0 +1,129 @@
+// local variable defines - starts at 200
+//$include "\codelib\variablehashes.h"
+
+
+$define lnkIsRunning 400
+
+
+$define recDummy		310
+
+
+
+
+// ******************************************************************************
+
+// =====================
+// System Header Defines
+// =====================
+
+// Operator Defines
+// ----------------
+$define eq 1
+$define ne 2
+$define lt 3
+$define le 4
+$define gt 5
+$define ge 6
+
+// Button Defines
+// --------------
+$define btnUp 1
+$define btnDown 2
+$define btnLeft 3
+$define btnRight 4
+$define btn0 5
+$define btn1 6
+$define btn2 7
+$define btn3 8
+$define btn4 9
+$define btn5 10
+$define btn6 11
+$define btn7 12
+$define btn8 13
+$define btn9 14
+$define btnSelect 15
+$define btnRed 100
+$define btnGreen 101
+$define btnYellow 102
+$define btnBlue 103
+$define btnText 104
+$define btnCancelExit 16
+$define btnHelp 17
+
+
+// ********************************************************************
+
+// PVR Defines
+// -----------
+
+$define btnStop						120
+$define btnPlay						121
+$define btnPause					122
+$define btnSkipForward		123
+$define btnSkipBack				124
+$define btnFastForward		125
+$define btnRewind					126
+
+
+// ******** ENGINE EVENT IDs ************
+
+$define ID_GroupIDRefError					2
+$define	ID_ContentRefError					3
+$define ID_TextKeyFunction					4
+$define ID_VideoPrefChanged 				6
+$define	ID_PauseResume 							7
+$define ID_NetworkBootInfo 					9
+$define ID_NonDestructiveTuneOK			10
+$define ID_ICStatusChanged 					200
+$define ID_ICLocalError 						201
+$define ID_ICNetworkError 					202
+$define ID_ICRemoteError 						203
+$define ID_SubtitlePrefChanged 			8
+$define ID_StreamRefError 					204
+$define ID_StreamUnderflow 					205
+$define ID_IPStreamAccessError 			206
+$define ID_AudioDescPrefChanged 		207
+$define ID_StreamUnderflowResume 		208
+$define ID_IndexFileError 					209
+$define ID_KeyFileError 						210
+
+// ****************************************
+
+
+
+
+{:Application ("/a" 0)
+ 
+ 
+ 
+ :Items
+ (
+ 
+ 
+ 
+  
+ {:Link &lnkIsRunning
+   :EventSource 0
+   :EventType IsRunning
+   :LinkEffect
+   (       
+  
+    	 :TransitionTo (('/pong.asn' 0))    	
+    	 
+     )
+ }
+  
+  
+ )
+ 
+ :TextCHook 10
+ :Font 'rec://font/uk1' 
+ :FontAttributes 'plain.24.24.0'
+ :TextColour '=FF=FF=FF=00' 
+ :BitmapCHook 4
+}
+
+
+
+
+

@@ -1,0 +1,86 @@
+// ============= objects =============
+
+{ :Rectangle &recBGBorder
+      :OrigBoxSize &BOARD_LENGTH &BOARD_WIDTH
+      :OrigPosition &BOARD_MIN_X &BOARD_MIN_Y
+      :OrigLineWidth 2
+      :OrigRefLineColour '=FF=FF=FF=00'          
+      :OrigRefFillColour '=00=00=00=FF'          
+      
+}
+
+{ :Rectangle &recPlayer1_Paddle 
+      :OrigBoxSize &P1_PADDLE_WIDTH &P1_PADDLE_LEN
+      :OrigPosition &P1_START_X &P1_START_Y
+      :OrigLineWidth 0          
+      :OrigRefFillColour '=FF=FF=FF=00'          
+}
+{ :Rectangle &recPlayer2_Paddle 
+      :OrigBoxSize &P2_PADDLE_WIDTH &P2_PADDLE_LEN
+      :OrigPosition &P2_START_X &P2_START_Y
+      :OrigLineWidth 0          
+      :OrigRefFillColour '=FF=FF=FF=00'          
+}
+{ :Rectangle &rctMidline 
+      :OrigBoxSize 2 &BOARD_WIDTH
+      :OrigPosition &BALL_START_X &BOARD_MIN_Y
+      :OrigLineWidth 0          
+      :OrigRefFillColour '=FF=FF=FF=00'          
+}
+
+
+{ :Bitmap &bmpBall
+		:OrigContent :ContentRef ( "/ball.png" )
+	  :OrigBoxSize 26 26
+	  :OrigPosition &BALL_START_X &BALL_START_Y
+}
+
+{:Text &txtP1Score
+      :OrigContent 'P1: 0' 
+      :OrigBoxSize 100 30
+      :OrigPosition 50 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=00=00=00'
+      :BackgroundColour '=00=00=00=FF'
+      :HJustification start 
+      :VJustification centre 
+}
+{:Text &txtP2Score
+      :OrigContent 'P2: 0' 
+      :OrigBoxSize 100 30
+      :OrigPosition 640 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=00=00=00'
+      :BackgroundColour '=00=00=00=FF'
+      :HJustification start 
+      :VJustification centre 
+}
+
+
+
+<DEBUG>
+
+{:Text &txtDEBUG1
+      :OrigContent 'DGBX' 
+      :OrigBoxSize 48 30
+      :OrigPosition 620 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=FF=FF=00'
+      :BackgroundColour '=00=00=FF=00'
+      :HJustification start 
+      :VJustification centre 
+}
+{:Text &txtDEBUG2
+      :OrigContent 'DGBY' 
+      :OrigBoxSize 48 30
+      :OrigPosition 670 5
+      :FontAttributes 'plain.24.24.0'
+      :TextColour '=FF=FF=FF=00'
+      :BackgroundColour '=00=00=FF=00'
+      :HJustification start 
+      :VJustification centre 
+}
+
+</DEBUG>
+
+

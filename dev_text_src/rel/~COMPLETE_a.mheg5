@@ -1,0 +1,129 @@
+// local variable defines - starts at 200
+//$include "\codelib\variablehashes.h"
+
+
+
+
+
+
+
+
+
+
+// ******************************************************************************
+
+// =====================
+// System Header Defines
+// =====================
+
+// Operator Defines
+// ----------------
+
+
+
+
+
+
+
+// Button Defines
+// --------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ********************************************************************
+
+// PVR Defines
+// -----------
+
+
+
+
+
+
+
+
+
+
+// ******** ENGINE EVENT IDs ************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ****************************************
+
+
+
+
+{:Application ("/a" 0)
+ 
+ 
+ 
+ :Items
+ (
+ 
+ 
+ 
+  
+ {:Link 400
+   :EventSource 0
+   :EventType IsRunning
+   :LinkEffect
+   (       
+  
+    	 :TransitionTo (('/pong.asn' 0))    	
+    	 
+     )
+ }
+  
+  
+ )
+ 
+ :TextCHook 10
+ :Font 'rec://font/uk1' 
+ :FontAttributes 'plain.24.24.0'
+ :TextColour '=FF=FF=FF=00' 
+ :BitmapCHook 4
+}
+
+
+
+
+

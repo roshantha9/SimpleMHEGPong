@@ -1,0 +1,51 @@
+// local variable defines - starts at 200
+//$include "\codelib\variablehashes.h"
+
+
+$define lnkIsRunning 400
+
+
+$define recDummy		310
+
+
+
+
+$include "%FS_CODELIB_PATH%\platform_func\system\System.h" 
+
+
+
+
+{:Application ("/a" 0)
+ 
+ 
+ 
+ :Items
+ (
+ 
+ 
+ 
+  
+ {:Link &lnkIsRunning
+   :EventSource 0
+   :EventType IsRunning
+   :LinkEffect
+   (       
+  
+    	 :TransitionTo (('/pong.asn' 0))    	
+    	 
+     )
+ }
+  
+  
+ )
+ 
+ :TextCHook 10
+ :Font 'rec://font/uk1' 
+ :FontAttributes 'plain.24.24.0'
+ :TextColour '=FF=FF=FF=00' 
+ :BitmapCHook 4
+}
+
+
+
+
